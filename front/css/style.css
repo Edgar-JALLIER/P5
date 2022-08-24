@@ -147,6 +147,7 @@ main {
 	margin-bottom: 40px;
 	padding-top: 25px;
 	width: 100%;
+	max-width: 800px;
 	border-radius: 10px;
 }
 .items article img {
