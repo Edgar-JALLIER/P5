@@ -1,4 +1,4 @@
-/**  API pour la page d'accueil  **/
+/**  Appel de l'API pour la page d'accueil  **/
 fetch("http://localhost:3000/api/products")
   .then(function (res) {
     if (res.ok) {
@@ -6,14 +6,12 @@ fetch("http://localhost:3000/api/products")
     }
   })
   .then(function (data) {
+    //Boucle for pour parcourir l'array de l'API
     for (let product of data) {
-      console.log(product);
-      //let elt = document.getElementById("items");
-      let newTitle = document.createElement("div");
-      newTitle.innerHTML =
-        "<a href='./product.html?id=" +
-        `${product._id}` +
-        "'/>" +
+      //Création d'une div avec de l'HTML
+      let newLink = document.createElement("a");
+      newLink.setAttribute("href", `./product.html?id=${product._id}`);
+      newLink.innerHTML =
         "<article>" +
         "  <img src=" +
         `${product.imageUrl}` +
@@ -28,15 +26,10 @@ fetch("http://localhost:3000/api/products")
         "</p>" +
         "</article>" +
         "</a>";
-      document.getElementById("items").appendChild(newTitle);
-      //elt.appendChild(newTitle);
-      /**let elt = document.getElementById("items");
-      let lien = document.createElement("p");
-      lien.appendChild(elt);
-      lien.innerHTML = "${product.name}";**/
+      //Placement de la div qui est créé (1er enfant de l'ID "items")
+      document.getElementById("items").appendChild(newLink);
     }
-    console.table(data);
   })
   .catch(function (err) {
-    // Une erreur est survenue
+    alert("Une erreur est survenue, veuillez revenir plus tard");
   });
