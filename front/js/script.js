@@ -15,9 +15,9 @@ fetch("http://localhost:3000/api/products")
         "<article>" +
         "  <img src=" +
         `${product.imageUrl}` +
-        " alt= " +
+        ' alt="' +
         `${product.altTxt}` +
-        ">" +
+        '">' +
         "  <h3 class='productName'>" +
         `${product.name}` +
         "</h3>" +
